@@ -17,6 +17,8 @@ const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
+const FinanceirosPage = lazy(() => import('../pages/protected/FinanceirosPage'))
+
 
 
 const routes = [
@@ -80,6 +82,11 @@ const routes = [
     path: '/blank',
     component: Blank,
   },
+  {
+  path: '/financeiros',
+  component: FinanceirosPage,
+},
+
 ]
 
 export default routes
