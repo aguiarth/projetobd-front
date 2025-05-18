@@ -4,7 +4,8 @@ import {
   fetchFinanceiros,
   fetchFinanceiroById,
   deleteFinanceiro,
-  updateFinanceiro
+  updateFinanceiro,
+  inputFinanceiro
 } from '../../features/financeiro/financeiroAPI'
 
 export default function FinanceiroLista() {
@@ -40,8 +41,15 @@ export default function FinanceiroLista() {
   }
 
   const deletar = async (id) => {
-    const confirm = window.confirm(`Tem certeza que deseja deletar o ID ${id}?`)
-    if (!confirm) return
+    const deletar = async (id) => {
+    const ok = await deleteFinanceiro(id)
+    if (ok) {
+      setFinanceiros(prev => prev.filter(f => f.idFinanceiro !== id))
+    } else {
+      alert('Erro ao deletar registro.')
+    }
+  }
+
 
     const ok = await deleteFinanceiro(id)
     if (ok) {
@@ -71,6 +79,67 @@ export default function FinanceiroLista() {
           </div>
         }
       >
+
+        <button
+          className="mb-8 btn btn-sm btn-accent"
+          onClick={() => document.getElementById('popupModalInserir').showModal()}
+        >
+          Novo Financeiro
+        </button>
+        {/* Modal INSERIR (fora do map) */}
+        <dialog id="popupModalInserir" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Inserir Novo Financeiro</h3>
+            <form method="dialog" className="space-y-3">
+              <div>
+                <label className="label text-sm">Lucro</label>
+                <input
+                  type="number"
+                  className="input input-bordered w-full"
+                  id="novoLucro"
+                />
+              </div>
+              <div>
+                <label className="label text-sm">Prejuízo</label>
+                <input
+                  type="number"
+                  className="input input-bordered w-full"
+                  id="novoPrejuizo"
+                />
+              </div>
+              <div className="modal-action">
+                <button className="btn">Cancelar</button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={async () => {
+                    const lucro = parseFloat(document.getElementById('novoLucro').value)
+                    const prejuizo = parseFloat(document.getElementById('novoPrejuizo').value)
+
+                    if (isNaN(lucro) || isNaN(prejuizo)) {
+                      alert('Preencha os valores corretamente.')
+                      return
+                    }
+
+                    const novo = await inputFinanceiro(lucro, prejuizo)
+
+                    if (novo) {
+                      setFinanceiros(prev => [...prev, novo])
+                      document.getElementById('popupModalInserir').close()
+                    } else {
+                      alert('Erro ao inserir.')
+                    }
+                  }}
+                >
+                  Confirmar
+                </button>
+              </div>
+            </form>
+          </div>
+        </dialog>
+
+
+
         {erro && (
           <p className="text-red-500 text-sm mb-2">{erro}</p>
         )}
@@ -95,11 +164,11 @@ export default function FinanceiroLista() {
               ) : (
                 financeiros.map((f) => (
                   <tr key={f.idFinanceiro}>
-                    <td>{f.idFinanceiro}</td>
-                    <td>{f.historicoLucro}</td>
-                    <td>{f.historicoPrejuizo}</td>
-                    <td>{f.dataAtualizacao}</td>
-                    <td className="flex gap-2">
+                    <td className = "font-bold">{f.idFinanceiro}</td>
+                    <td className = "font-bold">{f.historicoLucro}</td>
+                    <td className = "font-bold">{f.historicoPrejuizo}</td>
+                    <td className = "font-bold">{f.dataAtualizacao}</td>
+                    <td className="flex gap-10">
                       {/* Botão ALTERAR */}
                       <button
                         className="btn btn-sm btn-primary"
@@ -182,7 +251,10 @@ export default function FinanceiroLista() {
                             </form>
                             <button
                               className="btn btn-error"
-                              onClick={() => deletar(f.idFinanceiro)}
+                              onClick={async () => {
+                                deletar(f.idFinanceiro)
+                                document.getElementById('modalDeletar').close()
+                              }}
                             >
                               Confirmar
                             </button>

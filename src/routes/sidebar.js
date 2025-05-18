@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/app/financeiros', // url
     icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
-    name: 'Financeiros', // name that appear in Sidebar
+    name: 'Financeiro', // name that appear in Sidebar
   },
   {
     path: '/app/charts', // url

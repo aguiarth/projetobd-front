@@ -32,3 +32,21 @@ export async function updateFinanceiro(id, lucro, prejuizo) {
     if (!response.ok) return null
     return await response.json()
 }
+
+export async function inputFinanceiro(lucro, prejuizo) {
+    const response = await fetch(urlBase, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        historicoLucro: lucro, 
+        historicoPrejuizo: prejuizo }),
+    })
+    
+    if (!response.ok) {
+    const erro = await response.text()
+    console.error('Erro ao inserir:', erro)
+    return null
+  }
+
+  return await response.json()
+}
