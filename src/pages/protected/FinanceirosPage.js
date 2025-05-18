@@ -9,7 +9,7 @@ export default function FinanceiroPage() {
   const [financeiros, setFinanceiros] = useState([])
 
   useEffect(() => {
-    dispatch(setPageTitle({ title: "Financeiros" }))
+    dispatch(setPageTitle({ title: "Financeiro" }))
     fetchFinanceiros()
       .then(setFinanceiros)
       .catch((err) => {

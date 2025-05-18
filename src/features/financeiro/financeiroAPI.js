@@ -14,7 +14,21 @@ export async function fetchFinanceiroById(id) {
   return await response.json()
 }
 
-export async function deletFinanceiro(id) {
-    const response = await fecth(`${urlBase}/${id}`, { method: 'DELETE' })
+export async function deleteFinanceiro(id) {
+    const response = await fetch(`${urlBase}/${id}`, { method: 'DELETE' })
     return response.ok
+}
+
+export async function updateFinanceiro(id, lucro, prejuizo) {
+    const response = await fetch(`${urlBase}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idFinanceiro: id,
+          historicoLucro: lucro,
+          historicoPrejuizo: prejuizo,
+        }),
+      });
+    if (!response.ok) return null
+    return await response.json()
 }
