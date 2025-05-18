@@ -7,3 +7,14 @@ export async function fetchFinanceiros() {
   }
   return await response.json()
 }
+
+export async function fetchFinanceiroById(id) {
+  const response = await fetch(`${urlBase}/${id}`)
+  if (!response.ok) return null
+  return await response.json()
+}
+
+export async function deletFinanceiro(id) {
+    const response = await fecth(`${urlBase}/${id}`, { method: 'DELETE' })
+    return response.ok
+}
