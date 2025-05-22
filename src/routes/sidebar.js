@@ -14,8 +14,8 @@ import UserIcon from '@heroicons/react/24/outline/UserIcon'
 import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon'
 import BoltIcon from '@heroicons/react/24/outline/BoltIcon'
 import ChartBarIcon from '@heroicons/react/24/outline/ChartBarIcon'
+import CreditCardIcon from '@heroicons/react/24/outline/CreditCardIcon'
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon'
-import InboxArrowDownIcon from '@heroicons/react/24/outline/InboxArrowDownIcon'
 import UsersIcon from '@heroicons/react/24/outline/UsersIcon'
 import KeyIcon from '@heroicons/react/24/outline/KeyIcon'
 import DocumentDuplicateIcon from '@heroicons/react/24/outline/DocumentDuplicateIcon'
@@ -41,9 +41,14 @@ const routes = [
     name: 'Painel de Contas', // name that appear in Sidebar
     submenu : [
       {
-        path: '/app/Contas', //ALTERAR
+        path: '/app/Contas', 
         icon: <BanknotesIcon className={submenuIconClasses}/>,
         name: 'Contas',
+      },
+      {
+        path: '/app/ContasReceber', //ALTERAR
+        icon: <CreditCardIcon className={submenuIconClasses}/>,
+        name: 'Contas a Receber',
       },
     ]
   },

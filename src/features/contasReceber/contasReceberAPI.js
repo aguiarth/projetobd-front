@@ -19,25 +19,12 @@ export async function deleteContaReceber(id) {
     return response.ok
 }
 
-export async function updateContaReceber(id) {
-    const response = await fetch(urlBase, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-        idContaReceber: id,
-        }),
-    })
-
-    if (!response.ok) return null
-    return await response.json()
-}
-
-export async function inputConta(idContaReceber){
+export async function inputContaReceber(idConta){
     const response = await fetch(urlBase, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-        idContaReceber
+        idConta
         })
     })
 
@@ -48,4 +35,10 @@ export async function inputConta(idContaReceber){
     }
 
     return await response.json()
+}
+
+export async function fetchContaById(id) {
+  const response = await fetch(`http://localhost:8081/api/conta/${id}`)
+  if (!response.ok) return null
+  return await response.json()
 }

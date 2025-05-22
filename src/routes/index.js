@@ -18,6 +18,7 @@ const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
 const FinanceirosPage = lazy(() => import('../pages/protected/FinanceirosPage'))
 const ContaPage = lazy(() => import ('../pages/protected/ContaPage'))
+const ContaReceberPage = lazy(() => import ('../pages/protected/ContaReceberPage'))
 
 
 
@@ -86,6 +87,10 @@ const routes = [
   path: '/contas',
   component: ContaPage,
   },
+  {
+  path: '/contasReceber',
+  component: ContaReceberPage,
+  }
 
 ]
 
