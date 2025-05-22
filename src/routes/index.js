@@ -11,13 +11,13 @@ const Leads = lazy(() => import('../pages/protected/Leads'))
 const Integration = lazy(() => import('../pages/protected/Integration'))
 const Calendar = lazy(() => import('../pages/protected/Calendar'))
 const Team = lazy(() => import('../pages/protected/Team'))
-const Transactions = lazy(() => import('../pages/protected/Transactions'))
 const Bills = lazy(() => import('../pages/protected/Bills'))
 const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
 const FinanceirosPage = lazy(() => import('../pages/protected/FinanceirosPage'))
+const ContaPage = lazy(() => import ('../pages/protected/ContaPage'))
 
 
 
@@ -41,10 +41,6 @@ const routes = [
   {
     path: '/calendar',
     component: Calendar,
-  },
-  {
-    path: '/transactions',
-    component: Transactions,
   },
   {
     path: '/settings-profile',
@@ -85,7 +81,11 @@ const routes = [
   {
   path: '/financeiros',
   component: FinanceirosPage,
-},
+  },
+  {
+  path: '/contas',
+  component: ContaPage,
+  },
 
 ]
 

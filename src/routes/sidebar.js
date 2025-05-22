@@ -1,6 +1,7 @@
 /** Icons are imported separatly to reduce build time */
 import BellIcon from '@heroicons/react/24/outline/BellIcon'
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon'
+import { BanknotesIcon } from '@heroicons/react/24/solid';
 import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon'
 import TableCellsIcon from '@heroicons/react/24/outline/TableCellsIcon'
 import WalletIcon from '@heroicons/react/24/outline/WalletIcon'
@@ -30,14 +31,21 @@ const routes = [
     name: 'Dashboard',
   },
   {
-    path: '/app/leads', // url
-    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
-    name: 'Leads', // name that appear in Sidebar
-  },
-  {
     path: '/app/financeiros', // url
     icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
     name: 'Financeiro', // name that appear in Sidebar
+  },
+  {
+    path: '', // url 
+    icon: <WalletIcon className={`${iconClasses} inline` } />, // icon component
+    name: 'Painel de Contas', // name that appear in Sidebar
+    submenu : [
+      {
+        path: '/app/Contas', //ALTERAR
+        icon: <BanknotesIcon className={submenuIconClasses}/>,
+        name: 'Contas',
+      },
+    ]
   },
   {
     path: '/app/charts', // url
