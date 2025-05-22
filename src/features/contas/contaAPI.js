@@ -20,11 +20,11 @@ export async function deleteConta(id) {
 }
 
 export async function updateConta(id, idFinanceiro, dataEmissao, dataVencimento, valorTotal, status) {
-  const response = await fetch(`http://localhost:8081/api/conta/${id}`, {
+  const response = await fetch(urlBase, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      idConta: id, // ✅ obrigatório!
+      idConta: id,
       idFinanceiro,
       dataEmissao,
       dataVencimento,
@@ -39,7 +39,7 @@ export async function updateConta(id, idFinanceiro, dataEmissao, dataVencimento,
 
 
 export async function inputConta(idFinanceiro, dataEmissao, dataVencimento, valorTotal, status) {
-  const response = await fetch('http://localhost:8081/api/conta', {
+  const response = await fetch(urlBase, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
