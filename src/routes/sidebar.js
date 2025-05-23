@@ -36,6 +36,11 @@ const routes = [
     name: 'Financeiro', // name that appear in Sidebar
   },
   {
+    path: '/app/materiaPrima', // url
+    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    name: 'Materia Prima', // name that appear in Sidebar
+  },
+  {
     path: '', // url 
     icon: <WalletIcon className={`${iconClasses} inline` } />, // icon component
     name: 'Painel de Contas', // name that appear in Sidebar
