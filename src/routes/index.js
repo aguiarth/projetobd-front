@@ -18,6 +18,7 @@ const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
 const FinanceirosPage = lazy(() => import('../pages/protected/FinanceirosPage'))
 const MateriaPrimaPage = lazy(() => import('../pages/protected/MateriaPrimaPage'))
+const EstoquePage = lazy(() => import('../pages/protected/EstoquePage'))
 const ContaPage = lazy(() => import ('../pages/protected/ContaPage'))
 const ContaReceberPage = lazy(() => import ('../pages/protected/ContaReceberPage'))
 
@@ -87,6 +88,10 @@ const routes = [
   {
   path: '/materiaPrima',
   component: MateriaPrimaPage,
+  },
+  {
+  path: '/estoque',
+  component: EstoquePage,
   },
   {
   path: '/contas',

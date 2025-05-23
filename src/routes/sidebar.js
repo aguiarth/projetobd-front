@@ -1,5 +1,5 @@
 /** Icons are imported separatly to reduce build time */
-import BellIcon from '@heroicons/react/24/outline/BellIcon'
+// import BellIcon from '@heroicons/react/24/outline/BellIcon'
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon'
 import { BanknotesIcon } from '@heroicons/react/24/solid';
 import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon'
@@ -39,6 +39,11 @@ const routes = [
     path: '/app/materiaPrima', // url
     icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
     name: 'Materia Prima', // name that appear in Sidebar
+  },
+  {
+    path: '/app/estoque', // url
+    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    name: 'Estoque', // name that appear in Sidebar
   },
   {
     path: '', // url 
