@@ -20,7 +20,7 @@ export async function deleteConta(id) {
 }
 
 export async function updateConta(id, idFinanceiro, dataEmissao, dataVencimento, valorTotal, status) {
-  const response = await fetch(urlBase, {
+  const response = await fetch(`${urlBase}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

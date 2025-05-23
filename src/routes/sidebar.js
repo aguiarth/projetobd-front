@@ -19,6 +19,8 @@ import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon'
 import UsersIcon from '@heroicons/react/24/outline/UsersIcon'
 import KeyIcon from '@heroicons/react/24/outline/KeyIcon'
 import DocumentDuplicateIcon from '@heroicons/react/24/outline/DocumentDuplicateIcon'
+import BuildingOfficeIcon from '@heroicons/react/24/outline/BuildingOfficeIcon'
+import ArchiveBoxIcon from '@heroicons/react/24/outline/ArchiveBoxIcon'
 
 const iconClasses = `h-6 w-6`
 const submenuIconClasses = `h-5 w-5`
@@ -42,7 +44,7 @@ const routes = [
   },
   {
     path: '/app/estoque', // url
-    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    icon: <ArchiveBoxIcon className={iconClasses}/>, // icon component
     name: 'Estoque', // name that appear in Sidebar
   },
   {
@@ -66,6 +68,11 @@ const routes = [
     path: '/app/cliente', // url
     icon: <UserIcon className={iconClasses}/>, // icon component
     name: 'Cliente', // name that appear in Sidebar
+  },
+  {
+    path: '/app/fornecedor', // url
+    icon: <BuildingOfficeIcon className={iconClasses}/>, // icon component
+    name: 'Fornecedor', // name that appear in Sidebar
   },
   {
     path: '/app/charts', // url
