@@ -1,7 +1,7 @@
 /** Icons are imported separatly to reduce build time */
 // import BellIcon from '@heroicons/react/24/outline/BellIcon'
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon'
-import { BanknotesIcon } from '@heroicons/react/24/solid';
+import { BanknotesIcon, TagIcon } from '@heroicons/react/24/solid';
 import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon'
 import TableCellsIcon from '@heroicons/react/24/outline/TableCellsIcon'
 import WalletIcon from '@heroicons/react/24/outline/WalletIcon'
@@ -21,6 +21,7 @@ import KeyIcon from '@heroicons/react/24/outline/KeyIcon'
 import DocumentDuplicateIcon from '@heroicons/react/24/outline/DocumentDuplicateIcon'
 import BuildingOfficeIcon from '@heroicons/react/24/outline/BuildingOfficeIcon'
 import ArchiveBoxIcon from '@heroicons/react/24/outline/ArchiveBoxIcon'
+import ReceiptPercentIcon from '@heroicons/react/24/outline/ReceiptPercentIcon'
 
 const iconClasses = `h-6 w-6`
 const submenuIconClasses = `h-5 w-5`
@@ -61,6 +62,11 @@ const routes = [
         path: '/app/ContasReceber', //ALTERAR
         icon: <CreditCardIcon className={submenuIconClasses}/>,
         name: 'Contas a Receber',
+      },
+      {
+        path: '/app/ContasPagar', //ALTERAR
+        icon: <TagIcon className={submenuIconClasses}/>,
+        name: 'Contas a Pagar',
       },
     ]
   },
