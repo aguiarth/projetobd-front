@@ -21,7 +21,7 @@ import KeyIcon from '@heroicons/react/24/outline/KeyIcon'
 import DocumentDuplicateIcon from '@heroicons/react/24/outline/DocumentDuplicateIcon'
 import BuildingOfficeIcon from '@heroicons/react/24/outline/BuildingOfficeIcon'
 import ArchiveBoxIcon from '@heroicons/react/24/outline/ArchiveBoxIcon'
-import ReceiptPercentIcon from '@heroicons/react/24/outline/ReceiptPercentIcon'
+import ClipboardDocumentIcon from '@heroicons/react/24/outline/ClipboardDocumentIcon'
 
 const iconClasses = `h-6 w-6`
 const submenuIconClasses = `h-5 w-5`
@@ -79,6 +79,11 @@ const routes = [
     path: '/app/fornecedor', // url
     icon: <BuildingOfficeIcon className={iconClasses}/>, // icon component
     name: 'Fornecedor', // name that appear in Sidebar
+  },
+  {
+    path: '/app/pedido', // url
+    icon: <ClipboardDocumentIcon className={iconClasses}/>, // icon component
+    name: 'Pedido', // name that appear in Sidebar
   },
   {
     path: '/app/charts', // url
