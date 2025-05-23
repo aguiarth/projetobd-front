@@ -63,6 +63,11 @@ const routes = [
     ]
   },
   {
+    path: '/app/cliente', // url
+    icon: <UserIcon className={iconClasses}/>, // icon component
+    name: 'Cliente', // name that appear in Sidebar
+  },
+  {
     path: '/app/charts', // url
     icon: <ChartBarIcon className={iconClasses}/>, // icon component
     name: 'Analytics', // name that appear in Sidebar
@@ -117,7 +122,7 @@ const routes = [
     submenu : [
       {
         path: '/app/settings-profile', //url
-        icon: <UserIcon className={submenuIconClasses}/>, // icon component
+        icon: <UsersIcon className={submenuIconClasses}/>, // icon component
         name: 'Profile', // name that appear in Sidebar
       },
       {
