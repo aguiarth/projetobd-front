@@ -1,50 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import TitleCard from '../../components/Cards/TitleCard'
 import {
-  fetchFornecedor,
-  fetchFornecedorById,
-  deleteFornecedor,
-  updateFornecedor,
-  inputFornecedor
-} from '../../features/fornecedor/fornecedorAPI'
+  fetchPedido,
+  fetchPedidoById,
+  deletePedido,
+  updatePedido,
+  inputPedido
+} from '../../features/pedido/pedidoAPI'
 
-export default function Fornecedor() {
-  const [fornecedores, setFornecedores] = useState([])
-  const [cnpjBusca, setCnpjBusca] = useState('')
+export default function Pedido() {
+  const [pedidos, setPedidos] = useState([])
+  const [numeroBusca, setNumeroBusca] = useState('')
   const [erro, setErro] = useState(null)
-  const [fornecedorSelecionado, setFornecedorSelecionado] = useState(null)
+  const [pedidoSelecionado, setPedidoSelecionado] = useState(null)
 
   useEffect(() => {
-    fetchFornecedor().then(setFornecedores)
+    fetchPedido().then(setPedidos)
   }, [])
 
   const buscar = async () => {
-    if (!cnpjBusca.trim()) {
-      alert('Digite um CNPJ válido.')
+    if (!numeroBusca.trim()) {
+      alert('Digite um número de pedido válido.')
       return
     }
 
-    const res = await fetchFornecedorById(cnpjBusca)
+    const res = await fetchPedidoById(numeroBusca)
     if (res) {
       setErro(null)
-      setFornecedores([res])
+      setPedidos([res])
     } else {
       setErro('Nenhum registro encontrado.')
-      setFornecedores([])
+      setPedidos([])
     }
   }
 
   const limparBusca = async () => {
-    setCnpjBusca('')
+    setNumeroBusca('')
     setErro(null)
-    const dados = await fetchFornecedor()
-    setFornecedores(dados)
+    const dados = await fetchPedido()
+    setPedidos(dados)
   }
 
-  const deletar = async (cnpj) => {
-    const ok = await deleteFornecedor(cnpj)
+  const deletar = async (numero) => {
+    const ok = await deletePedido(numero)
     if (ok) {
-      setFornecedores(prev => prev.filter(f => f.cnpj !== cnpj))
+      setPedidos(prev => prev.filter(p => p.numero !== numero))
     } else {
       alert('Erro ao deletar registro.')
     }
@@ -53,16 +53,16 @@ export default function Fornecedor() {
   return (
     <>
       <TitleCard
-        title="Fornecedores Cadastrados"
+        title="Pedidos Cadastrados"
         topMargin="mt-2"
         TopSideButtons={
           <div className="flex items-center justify-end gap-2 mb-4">
             <input
               type="text"
-              placeholder="Buscar por CNPJ"
+              placeholder="Buscar por Número"
               className="input input-bordered w-52"
-              value={cnpjBusca}
-              onChange={(e) => setCnpjBusca(e.target.value)}
+              value={numeroBusca}
+              onChange={(e) => setNumeroBusca(e.target.value)}
             />
             <button onClick={buscar} className="btn btn-primary btn-sm">Buscar</button>
             <button onClick={limparBusca} className="btn btn-ghost btn-sm">Limpar</button>
@@ -73,45 +73,45 @@ export default function Fornecedor() {
           className="mb-8 btn btn-sm btn-accent"
           onClick={() => document.getElementById('popupModalInserir').showModal()}
         >
-          Novo Fornecedor
+          Novo Pedido
         </button>
 
         {/* Modal Inserir */}
         <dialog id="popupModalInserir" className="modal">
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Inserir Novo Fornecedor</h3>
+            <h3 className="font-bold text-lg">Inserir Novo Pedido</h3>
             <form method="dialog" className="space-y-3">
-              <input type="text" placeholder="CNPJ" className="input input-bordered w-full" id="novoCnpj" />
-              <input type="text" placeholder="Razão Social" className="input input-bordered w-full" id="novoRazao" />
-              <input type="text" placeholder="Endereço" className="input input-bordered w-full" id="novoEndereco" />
-              <input type="text" placeholder="Telefone" className="input input-bordered w-full" id="novoTelefone" />
-              <label className="label text-sm">Condições de Pagamento</label>
-              <select id="novoCondicoes" className="select select-bordered w-full">
+              <input type="date" className="input input-bordered w-full" id="novaData" defaultValue={new Date().toISOString().split('T')[0]} />
+              <input type="number" placeholder="Valor Total" className="input input-bordered w-full" id="novoValor" />
+              <select id="novoStatus" className="select select-bordered w-full">
+                <option value="ABERTO">Aberto</option>
+                <option value="FINALIZADO">Finalizado</option>
+                <option value="CANCELADO">Cancelado</option>
+              </select>
+              <select id="novaForma" className="select select-bordered w-full">
                 <option value="CARTAO_CREDITO">Cartão de Crédito</option>
                 <option value="CARTAO_DEBITO">Cartão de Débito</option>
                 <option value="PIX">PIX</option>
                 <option value="BOLETO">Boleto</option>
               </select>
-
               <div className="modal-action">
                 <button className="btn">Cancelar</button>
                 <button
                   type="button"
                   className="btn btn-primary"
                   onClick={async () => {
-                    const cnpj = document.getElementById('novoCnpj').value
-                    const razaoSocial = document.getElementById('novoRazao').value
-                    const endereco = document.getElementById('novoEndereco').value
-                    const telefone = document.getElementById('novoTelefone').value
-                    const condicoesPagamento = document.getElementById('novoCondicoes').value
+                    const dataEmissao = document.getElementById('novaData').value
+                    const valorTotal = parseFloat(document.getElementById('novoValor').value)
+                    const status = document.getElementById('novoStatus').value
+                    const formaPagamento = document.getElementById('novaForma').value
 
-                    const novo = await inputFornecedor(cnpj, razaoSocial, endereco, telefone, condicoesPagamento)
+                    const novo = await inputPedido(null, dataEmissao, valorTotal, status, formaPagamento)
 
                     if (novo) {
-                      setFornecedores(prev => [...prev, novo])
+                      setPedidos(prev => [...prev, novo])
                       document.getElementById('popupModalInserir').close()
                     } else {
-                      alert('Erro ao inserir fornecedor.')
+                      alert('Erro ao inserir pedido.')
                     }
                   }}
                 >
@@ -128,42 +128,42 @@ export default function Fornecedor() {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>CNPJ</th>
-                <th>Razão Social</th>
-                <th>Endereço</th>
-                <th>Telefone</th>
-                <th>Condições Pagamento</th>
+                <th>Número</th>
+                <th>Data Emissão</th>
+                <th>Valor Total</th>
+                <th>Status</th>
+                <th>Forma Pagamento</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody>
-              {fornecedores.length === 0 ? (
+              {pedidos.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center text-gray-500">Nenhum dado para exibir.</td>
                 </tr>
               ) : (
-                fornecedores.map((f) => (
-                  <tr key={f.cnpj}>
-                    <td>{f.cnpj}</td>
-                    <td>{f.razaoSocial}</td>
-                    <td>{f.endereco}</td>
-                    <td>{f.telefone}</td>
-                    <td>{f.condicoesPagamento}</td>
+                pedidos.map((p) => (
+                  <tr key={p.numero}>
+                    <td>{p.numero}</td>
+                    <td>{p.dataEmissao}</td>
+                    <td>{p.valorTotal}</td>
+                    <td>{p.status}</td>
+                    <td>{p.formaPagamento}</td>
                     <td className="flex gap-3">
                       <button
                         className="btn btn-sm btn-primary"
                         onClick={() => {
-                          setFornecedorSelecionado(f)
+                          setPedidoSelecionado(p)
                           document.getElementById('popupModalEditar').showModal()
                         }}
                       >Alterar</button>
                       <button
                         className="btn btn-sm btn-error"
                         onClick={() => {
-                          document.getElementById(`popupModalDeletar-${f.cnpj}`).showModal()
+                          document.getElementById(`popupModalDeletar-${p.numero}`).showModal()
                         }}
                       >Deletar</button>
-                      <dialog id={`popupModalDeletar-${f.cnpj}`} className="modal">
+                      <dialog id={`popupModalDeletar-${p.numero}`} className="modal">
                         <div className="modal-box">
                           <h3 className="font-bold text-lg">Tem certeza?</h3>
                           <p className="py-4">Esta ação não poderá ser desfeita.</p>
@@ -174,8 +174,8 @@ export default function Fornecedor() {
                             <button
                               className="btn btn-error"
                               onClick={async () => {
-                                await deletar(f.cnpj)
-                                document.getElementById(`popupModalDeletar-${f.cnpj}`).close()
+                                await deletar(p.numero)
+                                document.getElementById(`popupModalDeletar-${p.numero}`).close()
                               }}
                             >
                               Confirmar
@@ -194,14 +194,18 @@ export default function Fornecedor() {
 
       {/* Modal de edição */}
       <dialog id="popupModalEditar" className="modal">
-        {fornecedorSelecionado && (
+        {pedidoSelecionado && (
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Alterar Fornecedor</h3>
+            <h3 className="font-bold text-lg">Alterar Pedido</h3>
             <form method="dialog" className="space-y-3">
-              <input defaultValue={fornecedorSelecionado.razaoSocial} className="input input-bordered w-full" id="editarRazao" />
-              <input defaultValue={fornecedorSelecionado.endereco} className="input input-bordered w-full" id="editarEndereco" />
-              <input defaultValue={fornecedorSelecionado.telefone} className="input input-bordered w-full" id="editarTelefone" />
-              <select defaultValue={fornecedorSelecionado.condicoesPagamento} id="editarCondicoes" className="select select-bordered w-full">
+              <input defaultValue={pedidoSelecionado.dataEmissao} className="input input-bordered w-full" id="editarData" type="date" />
+              <input defaultValue={pedidoSelecionado.valorTotal} className="input input-bordered w-full" id="editarValor" type="number" />
+              <select defaultValue={pedidoSelecionado.status} id="editarStatus" className="select select-bordered w-full">
+                <option value="ABERTO">Aberto</option>
+                <option value="FINALIZADO">Finalizado</option>
+                <option value="CANCELADO">Cancelado</option>
+              </select>
+              <select defaultValue={pedidoSelecionado.formaPagamento} id="editarForma" className="select select-bordered w-full">
                 <option value="CARTAO_CREDITO">Cartão de Crédito</option>
                 <option value="CARTAO_DEBITO">Cartão de Débito</option>
                 <option value="PIX">PIX</option>
@@ -213,25 +217,23 @@ export default function Fornecedor() {
                   type="button"
                   className="btn btn-success"
                   onClick={async () => {
-                    const razaoSocial = document.getElementById('editarRazao').value
-                    const endereco = document.getElementById('editarEndereco').value
-                    const telefone = document.getElementById('editarTelefone').value
-                    const condicoesPagamento = document.getElementById('editarCondicoes').value
+                    const dataEmissao = document.getElementById('editarData').value
+                    const valorTotal = parseFloat(document.getElementById('editarValor').value)
+                    const status = document.getElementById('editarStatus').value
+                    const formaPagamento = document.getElementById('editarForma').value
 
-                    const atualizado = await updateFornecedor(
-                      fornecedorSelecionado.cnpj,
-                      razaoSocial,
-                      endereco,
-                      telefone,
-                      condicoesPagamento
+                    const atualizado = await updatePedido(
+                      pedidoSelecionado.numero,
+                      dataEmissao,
+                      valorTotal,
+                      status,
+                      formaPagamento
                     )
 
                     if (atualizado) {
-                      setFornecedores(prev =>
-                        prev.map(item => item.cnpj === fornecedorSelecionado.cnpj ? atualizado : item)
-                      )
+                      setPedidos(prev => prev.map(item => item.numero === pedidoSelecionado.numero ? atualizado : item))
                       document.getElementById('popupModalEditar').close()
-                      setFornecedorSelecionado(null)
+                      setPedidoSelecionado(null)
                     } else {
                       alert('Erro ao atualizar.')
                     }
