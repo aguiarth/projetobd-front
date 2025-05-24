@@ -49,6 +49,11 @@ const routes = [
     name: 'Produto Acabado', // name that appear in Sidebar
   },
   {
+    path: '/app/lote', // url
+    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    name: 'Lote', // name that appear in Sidebar
+  },
+  {
     path: '/app/estoque', // url
     icon: <ArchiveBoxIcon className={iconClasses}/>, // icon component
     name: 'Estoque', // name that appear in Sidebar
