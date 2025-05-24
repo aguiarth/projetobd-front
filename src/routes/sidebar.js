@@ -44,6 +44,11 @@ const routes = [
     name: 'Materia Prima', // name that appear in Sidebar
   },
   {
+    path: '/app/produtoAcabado', // url
+    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    name: 'Produto Acabado', // name that appear in Sidebar
+  },
+  {
     path: '/app/estoque', // url
     icon: <ArchiveBoxIcon className={iconClasses}/>, // icon component
     name: 'Estoque', // name that appear in Sidebar
