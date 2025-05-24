@@ -64,6 +64,11 @@ const routes = [
     name: 'Entrega', // name that appear in Sidebar
   },
   {
+    path: '/app/ordemProducao', // url
+    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    name: 'Ordem Produção', // name that appear in Sidebar
+  },
+  {
     path: '/app/estoque', // url
     icon: <ArchiveBoxIcon className={iconClasses}/>, // icon component
     name: 'Estoque', // name that appear in Sidebar
