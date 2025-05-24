@@ -59,6 +59,11 @@ const routes = [
     name: 'Expedição', // name that appear in Sidebar
   },
   {
+    path: '/app/entrega', // url
+    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
+    name: 'Entrega', // name that appear in Sidebar
+  },
+  {
     path: '/app/estoque', // url
     icon: <ArchiveBoxIcon className={iconClasses}/>, // icon component
     name: 'Estoque', // name that appear in Sidebar
