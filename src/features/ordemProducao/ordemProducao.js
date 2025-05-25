@@ -8,7 +8,7 @@ import {
   inputOrdemProducao
 } from '../../features/ordemProducao/ordemProducaoAPI';
 
-export default function OrdemProducaoLista() {
+export default function OrdemProducao() {
   const [ordens, setOrdens] = useState([]);
   const [idBusca, setIdBusca] = useState('');
   const [erro, setErro] = useState(null);

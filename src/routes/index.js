@@ -24,12 +24,12 @@ const ExpedicaoPage = lazy(() => import('../pages/protected/ExpedicaoPage'))
 const EntregaPage = lazy(() => import('../pages/protected/EntregaPage'))
 const OrdemProducaoPage = lazy(() => import('../pages/protected/OrdemProducaoPage'))
 const EstoquePage = lazy(() => import('../pages/protected/EstoquePage'))
-const ContaPage = lazy(() => import ('../pages/protected/ContaPage'))
-const ContaReceberPage = lazy(() => import ('../pages/protected/ContaReceberPage'))
-const ContaPagarPage = lazy(() => import ('../pages/protected/ContaPagarPage'))
-const ClientePage = lazy(() => import ('../pages/protected/ClientePage'))
-const FornecedorPage = lazy(() => import ('../pages/protected/FornecedorPage'))
-const PedidoPage = lazy(() => import ('../pages/protected/PedidoPage'))
+const ContaPage = lazy(() => import('../pages/protected/ContaPage'))
+const ContaReceberPage = lazy(() => import('../pages/protected/ContaReceberPage'))
+const ContaPagarPage = lazy(() => import('../pages/protected/ContaPagarPage'))
+const ClientePage = lazy(() => import('../pages/protected/ClientePage'))
+const FornecedorPage = lazy(() => import('../pages/protected/FornecedorPage'))
+const PedidoPage = lazy(() => import('../pages/protected/PedidoPage'))
 
 
 
@@ -91,60 +91,60 @@ const routes = [
     component: Blank,
   },
   {
-  path: '/financeiros',
-  component: FinanceirosPage,
+    path: '/financeiros',
+    component: FinanceirosPage,
   },
   {
-  path: '/fornecedor',
-  component: FornecedorPage,
+    path: '/fornecedor',
+    component: FornecedorPage,
   },
   {
-  path: '/pedido',
-  component: PedidoPage,
+    path: '/pedido',
+    component: PedidoPage,
   },
   {
-  path: '/materiaPrima',
-  component: MateriaPrimaPage,
+    path: '/materiaPrima',
+    component: MateriaPrimaPage,
   },
   {
-  path: '/produtoAcabado',
-  component: ProdutoAcabadoPage,
+    path: '/produtoAcabado',
+    component: ProdutoAcabadoPage,
   },
   {
-  path: '/lote',
-  component: LotePage,
+    path: '/lote',
+    component: LotePage,
   },
   {
-  path: '/expedicao',
-  component: ExpedicaoPage,
+    path: '/expedicao',
+    component: ExpedicaoPage,
   },
   {
-  path: '/entrega',
-  component: EntregaPage,
+    path: '/entrega',
+    component: EntregaPage,
   },
   {
-  path: '/ordemProducao',
-  component: OrdemProducaoPage,
+    path: '/ordemProducao',
+    component: OrdemProducaoPage,
   },
   {
-  path: '/estoque',
-  component: EstoquePage,
+    path: '/estoque',
+    component: EstoquePage,
   },
   {
-  path: '/contas',
-  component: ContaPage,
+    path: '/contas',
+    component: ContaPage,
   },
   {
-  path: '/contasReceber',
-  component: ContaReceberPage,
+    path: '/contasReceber',
+    component: ContaReceberPage,
   },
   {
-  path: '/contasPagar',
-  component: ContaPagarPage,
+    path: '/contasPagar',
+    component: ContaPagarPage,
   },
   {
-  path: '/cliente',
-  component: ClientePage,
+    path: '/cliente',
+    component: ClientePage,
   }
 ]
 
