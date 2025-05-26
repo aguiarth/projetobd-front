@@ -94,8 +94,6 @@ function Header(){
                             Perfil
                             </Link>
                         </li>
-                        <li className=''><Link to={'/forgot-password'}>Alterar Senha</Link></li>
-                        <div className="divider mt-0 mb-0"></div>
                         <li><a onClick={logoutUser}>Logout</a></li>
                     </ul>
                 </div>
