@@ -1,6 +1,4 @@
-// src/features/dashboard/dashboardAPI.js
-
-const urlBase = 'http://localhost:8081/api/dashboard'; // A URL base do seu DashboardController
+const urlBase = 'http://localhost:8081/api/dashboard';
 
 export async function fetchPedidosResumo() {
   const response = await fetch(`${urlBase}/pedidos-resumo`);
