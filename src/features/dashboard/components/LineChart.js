@@ -1,3 +1,5 @@
+// dashboard/components/LineChart.js
+import React from 'react'; // Adicionar import do React, se não estiver explícito
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,7 +12,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import TitleCard from '../../../components/Cards/TitleCard';
+import TitleCard from '../../../components/Cards/TitleCard'; // Verifique o caminho
 
 ChartJS.register(
   CategoryScale,
@@ -23,40 +25,32 @@ ChartJS.register(
   Legend
 );
 
-function LineChart(){
+// Recebe 'data' e 'title' como props
+function LineChart({ data, title }) { // Alterado para receber props
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-    },
-  };
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: title, // Usa o título passado via props
+            },
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
 
-  
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-  const data = {
-  labels,
-  datasets: [
-    {
-      fill: true,
-      label: 'MAU',
-      data: labels.map(() => { return Math.random() * 100 + 500 }),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-  
-
-    return(
-      <TitleCard title={"Montly Active Users (in K)"}>
-          <Line data={data} options={options}/>
-      </TitleCard>
-    )
+    return (
+        <TitleCard title={title}> {/* Usa o título passado via props */}
+            <Line data={data} options={options} />
+        </TitleCard>
+    );
 }
 
-
-export default LineChart
+export default LineChart;

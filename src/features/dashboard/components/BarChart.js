@@ -12,42 +12,31 @@ import TitleCard from '../../../components/Cards/TitleCard';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function BarChart(){
+function BarChart({ data, title }) { // Alterado para receber props
 
     const options = {
         responsive: true,
         plugins: {
-          legend: {
-            position: 'top',
-          }
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: title, // Usa o título passado via props
+            },
         },
-      };
-      
-      const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-      
-      const data = {
-        labels,
-        datasets: [
-          {
-            label: 'Store 1',
-            data: labels.map(() => { return Math.random() * 1000 + 500 }),
-            backgroundColor: 'rgba(255, 99, 132, 1)',
-          },
-          {
-            label: 'Store 2',
-            data: labels.map(() => { return Math.random() * 1000 + 500 }),
-            backgroundColor: 'rgba(53, 162, 235, 1)',
-          },
-        ],
-      };
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
 
-    return(
-      <TitleCard title={"Revenue"}>
+    return (
+        <TitleCard title={title}> {/* Usa o título passado via props */}
             <Bar options={options} data={data} />
-      </TitleCard>
-
-    )
+        </TitleCard>
+    );
 }
 
-
-export default BarChart
+export default BarChart;

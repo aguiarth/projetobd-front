@@ -1,30 +1,43 @@
-import HeartIcon  from '@heroicons/react/24/outline/HeartIcon'
-import BoltIcon  from '@heroicons/react/24/outline/BoltIcon'
+import React from 'react';
+import HeartIcon from '@heroicons/react/24/outline/HeartIcon'; // Exemplo de ícone
+import BoltIcon from '@heroicons/react/24/outline/BoltIcon'; // Exemplo de ícone
+import ShoppingCartIcon from '@heroicons/react/24/outline/ShoppingCartIcon'; // Ícone mais relevante para pedidos
 
+// Agora recebe props de `pedidos`
+function PageStats({ totalPedidos, pedidosAbertos, pedidosFinalizados }) { // Alterado para receber as novas props
 
-function PageStats({}){
-    return(
+    const iconClasses = 'w-8 h-8';
+
+    return (
         <div className="stats bg-base-100 shadow">
-  
-  <div className="stat">
-    <div className="stat-figure invisible md:visible">
-        <HeartIcon className='w-8 h-8'/>
-    </div>
-    <div className="stat-title">Total Likes</div>
-    <div className="stat-value">25.6K</div>
-    <div className="stat-desc">21% more than last month</div>
-  </div>
-  
-  <div className="stat">
-    <div className="stat-figure invisible md:visible">
-        <BoltIcon className='w-8 h-8'/>
-    </div>
-    <div className="stat-title">Page Views</div>
-    <div className="stat-value">2.6M</div>
-    <div className="stat-desc">14% more than last month</div>
-  </div>
-</div>
-    )
+
+            <div className="stat">
+                <div className="stat-figure invisible md:visible">
+                    <ShoppingCartIcon className={iconClasses} /> {/* Ícone para total de pedidos */}
+                </div>
+                <div className="stat-title">Total de Pedidos</div>
+                <div className="stat-value">{totalPedidos}</div>
+                <div className="stat-desc">Pedidos registrados no sistema</div>
+            </div>
+
+            <div className="stat">
+                <div className="stat-figure invisible md:visible">
+                    <BoltIcon className={iconClasses} /> {/* Ícone para pedidos abertos */}
+                </div>
+                <div className="stat-title">Pedidos Abertos</div>
+                <div className="stat-value">{pedidosAbertos}</div>
+                <div className="stat-desc">Aguardando processamento</div>
+            </div>
+
+            <div className="stat">
+                <div className="stat-figure invisible md:visible">
+                    <BoltIcon className={iconClasses} /> {/* Ícone para pedidos abertos */}
+                </div>
+                <div className="stat-title">Pedidos Finalizados</div>
+                <div className="stat-value">{pedidosFinalizados}</div>
+            </div>
+        </div>
+    );
 }
 
-export default PageStats
+export default PageStats;

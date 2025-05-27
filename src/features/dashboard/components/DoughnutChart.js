@@ -15,52 +15,27 @@ ChartJS.register(ArcElement, Tooltip, Legend,
     Filler,
     Legend);
 
-function DoughnutChart(){
+// Recebe 'data' e 'title' como props
+function DoughnutChart({ data, title }) { // Alterado para receber props
 
     const options = {
         responsive: true,
         plugins: {
-          legend: {
-            position: 'top',
-          },
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: title, // Usa o título passado via props
+            },
         },
-      };
-      
-      const labels = ['Electronics', 'Home Applicances', 'Beauty', 'Furniture', 'Watches', 'Apparel'];
-      
-      const data = {
-        labels,
-        datasets: [
-            {
-                label: '# of Orders',
-                data: [122, 219, 30, 51, 82, 13],
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.8)',
-                  'rgba(54, 162, 235, 0.8)',
-                  'rgba(255, 206, 86, 0.8)',
-                  'rgba(75, 192, 192, 0.8)',
-                  'rgba(153, 102, 255, 0.8)',
-                  'rgba(255, 159, 64, 0.8)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)',
-                ],
-                borderWidth: 1,
-              }
-        ],
-      };
+    };
 
-    return(
-        <TitleCard title={"Orders by Category"}>
-                <Doughnut options={options} data={data} />
+    return (
+        <TitleCard title={title}> {/* Usa o título passado via props */}
+            <Doughnut options={options} data={data} />
         </TitleCard>
-    )
+    );
 }
 
-
-export default DoughnutChart
+export default DoughnutChart;

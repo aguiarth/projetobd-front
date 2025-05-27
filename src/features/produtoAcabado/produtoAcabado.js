@@ -80,6 +80,7 @@ export default function ProdutoAcabadoLista() {
             <h3 className="font-bold text-lg">Inserir Novo Produto Acabado</h3>
             <form method="dialog" className="space-y-3">
               <input type="text" placeholder="Descrição" id="novaDescricao" className="input input-bordered w-full" />
+              <label className="label text-sm">Data Finalização</label>
               <input type="date" id="novaFinalizacao" className="input input-bordered w-full" />
               <div className="modal-action">
                 <button className="btn">Cancelar</button>

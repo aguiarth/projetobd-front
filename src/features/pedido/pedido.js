@@ -81,6 +81,7 @@ export default function Pedido() {
           <div className="modal-box">
             <h3 className="font-bold text-lg">Inserir Novo Pedido</h3>
             <form method="dialog" className="space-y-3">
+              <label className="label text-sm">Data Emissão</label>
               <input type="date" className="input input-bordered w-full" id="novaData" defaultValue={new Date().toISOString().split('T')[0]} />
               <input type="number" placeholder="Valor Total" className="input input-bordered w-full" id="novoValor" />
               <select id="novoStatus" className="select select-bordered w-full">

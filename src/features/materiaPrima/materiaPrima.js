@@ -80,6 +80,7 @@ export default function MateriaPrimaLista() {
             <h3 className="font-bold text-lg">Inserir Nova Matéria-Prima</h3>
             <form method="dialog" className="space-y-3">
               <input type="text" placeholder="Descrição" id="novaDescricao" className="input input-bordered w-full" />
+              <label className="label text-sm">Data Validade</label>
               <input type="date" id="novaValidade" className="input input-bordered w-full" />
               <input type="number" placeholder="Quantidade" id="novaQuantidade" className="input input-bordered w-full" />
               <input type="number" placeholder="Custo Unitário" id="novoCusto" className="input input-bordered w-full" />
