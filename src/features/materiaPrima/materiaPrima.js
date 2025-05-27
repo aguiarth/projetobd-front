@@ -147,7 +147,13 @@ export default function MateriaPrimaLista() {
                     <td>{m.custoUnitario}</td>
                     <td>{m.custoTotal}</td>
                     <td className="flex gap-2">
-                      <button className="btn btn-sm btn-primary" onClick={() => document.getElementById(`alterar-${m.idMateriaPrima}`).showModal()}>Alterar</button>
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={() => document.getElementById(`alterar-${m.idMateriaPrima}`).showModal()}
+                      >
+                        Alterar
+                      </button>
+
                       <dialog id={`alterar-${m.idMateriaPrima}`} className="modal">
                         <div className="modal-box">
                           <h3 className="font-bold text-lg">Alterar Matéria-Prima</h3>
@@ -183,7 +189,33 @@ export default function MateriaPrimaLista() {
                         </div>
                       </dialog>
 
-                      <button className="btn btn-sm btn-error" onClick={() => deletar(m.idMateriaPrima)}>Deletar</button>
+                      <button
+                        className="btn btn-sm btn-error"
+                        onClick={() => document.getElementById(`popupModalDeletar-${m.idMateriaPrima}`).showModal()}
+                      >
+                        Deletar
+                      </button>
+
+                      <dialog id={`popupModalDeletar-${m.idMateriaPrima}`} className="modal">
+                        <div className="modal-box">
+                          <h3 className="font-bold text-lg">Tem certeza?</h3>
+                          <p className="py-4">Esta ação não poderá ser desfeita.</p>
+                          <div className="modal-action">
+                            <form method="dialog">
+                              <button className="btn">Cancelar</button>
+                            </form>
+                            <button
+                              className="btn btn-error"
+                              onClick={async () => {
+                                await deletar(m.idMateriaPrima);
+                                document.getElementById(`popupModalDeletar-${m.idMateriaPrima}`).close();
+                              }}
+                            >
+                              Confirmar
+                            </button>
+                          </div>
+                        </div>
+                      </dialog>
                     </td>
                   </tr>
                 ))

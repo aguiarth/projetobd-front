@@ -88,7 +88,6 @@ export default function LoteLista() {
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">Inserir Novo Lote</h3>
                         <form method="dialog" className="space-y-3">
-
                             <select id="idEstoque" className="select select-bordered w-full">
                                 <option value="">Selecione o Estoque</option>
                                 {estoques.map(e => (
@@ -113,6 +112,7 @@ export default function LoteLista() {
                             <input type="text" placeholder="Descrição" id="descricao" className="input input-bordered w-full" />
                             <input type="text" placeholder="Custo" id="custo" className="input input-bordered w-full" />
                             <input type="number" placeholder="Quantidade" id="quantidade" className="input input-bordered w-full" />
+                            <label className="label text-sm">Data Validade</label>
                             <input type="date" id="dataValidade" className="input input-bordered w-full" />
                             <div className="modal-action">
                                 <button className="btn">Cancelar</button>
@@ -192,81 +192,36 @@ export default function LoteLista() {
                                             </button>
 
                                             <dialog id={`alterar-${l.codigo}`} className="modal">
-                                                <div className="modal-box">
-                                                    <h3 className="font-bold text-lg">Editar Lote</h3>
-                                                    <form method="dialog" className="space-y-2">
-                                                        <select defaultValue={l.idEstoque} id={`estoque-${l.codigo}`} className="select select-bordered w-full">
-                                                            <option value="">Selecione o Estoque</option>
-                                                            {estoques.map(e => (
-                                                                <option key={e.idEstoque} value={e.idEstoque}>{e.idEstoque}</option>
-                                                            ))}
-                                                        </select>
-
-                                                        <select defaultValue={l.idMateriaPrima} id={`materia-${l.codigo}`} className="select select-bordered w-full">
-                                                            <option value="">Selecione a Matéria-Prima</option>
-                                                            {materiasPrimas.map(m => (
-                                                                <option key={m.idMateriaPrima} value={m.idMateriaPrima}>{m.idMateriaPrima}</option>
-                                                            ))}
-                                                        </select>
-
-                                                        <select defaultValue={l.idProduto} id={`produto-${l.codigo}`} className="select select-bordered w-full">
-                                                            <option value="">Selecione o Produto Acabado</option>
-                                                            {produtos.map(p => (
-                                                                <option key={p.idProduto} value={p.idProduto}>{p.idProduto}</option>
-                                                            ))}
-                                                        </select>
-
-                                                        <input type="text" defaultValue={l.descricao} id={`descricao-${l.codigo}`} className="input input-bordered w-full" />
-                                                        <input type="text" defaultValue={l.custo} id={`custo-${l.codigo}`} className="input input-bordered w-full" />
-                                                        <input type="number" defaultValue={l.quantidade} id={`quantidade-${l.codigo}`} className="input input-bordered w-full" />
-                                                        <input type="date" defaultValue={l.dataValidade} id={`validade-${l.codigo}`} className="input input-bordered w-full" />
-
-                                                        <div className="modal-action">
-                                                            <button className="btn">Cancelar</button>
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-success"
-                                                                onClick={async () => {
-                                                                    const idEstoque = parseInt(document.getElementById(`estoque-${l.codigo}`).value);
-                                                                    const idMateriaPrima = parseInt(document.getElementById(`materia-${l.codigo}`).value);
-                                                                    const idProduto = parseInt(document.getElementById(`produto-${l.codigo}`).value);
-                                                                    const descricao = document.getElementById(`descricao-${l.codigo}`).value;
-                                                                    const custo = document.getElementById(`custo-${l.codigo}`).value;
-                                                                    const quantidade = parseInt(document.getElementById(`quantidade-${l.codigo}`).value);
-                                                                    const dataValidade = document.getElementById(`validade-${l.codigo}`).value;
-
-                                                                    if (!idEstoque || !idMateriaPrima || !idProduto || !descricao || !custo || isNaN(quantidade) || !dataValidade) {
-                                                                        alert('Preencha todos os campos corretamente.');
-                                                                        return;
-                                                                    }
-
-                                                                    const atualizado = await updateLote(
-                                                                        l.codigo,
-                                                                        idEstoque,
-                                                                        idMateriaPrima,
-                                                                        idProduto,
-                                                                        custo,
-                                                                        descricao,
-                                                                        quantidade,
-                                                                        dataValidade
-                                                                    );
-
-                                                                    if (atualizado) {
-                                                                        setLotes(prev => prev.map(item => item.codigo === l.codigo ? atualizado : item));
-                                                                        document.getElementById(`alterar-${l.codigo}`).close();
-                                                                    } else {
-                                                                        alert('Erro ao atualizar.');
-                                                                    }
-                                                                }}
-                                                            >
-                                                                Salvar
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                            
                                             </dialog>
 
-                                            <button className="btn btn-sm btn-error" onClick={() => deletar(l.codigo)}>Deletar</button>
+                                            <button
+                                                className="btn btn-sm btn-error"
+                                                onClick={() => document.getElementById(`popupModalDeletar-${l.codigo}`).showModal()}
+                                            >
+                                                Deletar
+                                            </button>
+
+                                            <dialog id={`popupModalDeletar-${l.codigo}`} className="modal">
+                                                <div className="modal-box">
+                                                    <h3 className="font-bold text-lg">Tem certeza?</h3>
+                                                    <p className="py-4">Esta ação não poderá ser desfeita.</p>
+                                                    <div className="modal-action">
+                                                        <form method="dialog">
+                                                            <button className="btn">Cancelar</button>
+                                                        </form>
+                                                        <button
+                                                            className="btn btn-error"
+                                                            onClick={async () => {
+                                                                await deletar(l.codigo);
+                                                                document.getElementById(`popupModalDeletar-${l.codigo}`).close();
+                                                            }}
+                                                        >
+                                                            Confirmar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </dialog>
                                         </td>
                                     </tr>
                                 ))

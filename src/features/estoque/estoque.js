@@ -85,8 +85,6 @@ export default function EstoqueLista() {
                 <option value="SAIDA">Saída</option>
               </select>
 
-              {/* REMOVIDO inputs de data e hora */}
-
               <p className="text-sm text-gray-500">
                 Data e hora serão inseridas automaticamente.
               </p>
@@ -162,13 +160,9 @@ export default function EstoqueLista() {
                               <option value="ENTRADA">Entrada</option>
                               <option value="SAIDA">Saída</option>
                             </select>
-
-                            {/* REMOVIDO inputs de data e hora */}
-
                             <p className="text-sm text-gray-500">
                               Data e hora são geradas automaticamente e não podem ser alteradas.
                             </p>
-
                             <div className="modal-action">
                               <button className="btn">Cancelar</button>
                               <button
@@ -194,7 +188,33 @@ export default function EstoqueLista() {
                         </div>
                       </dialog>
 
-                      <button className="btn btn-sm btn-error" onClick={() => deletar(e.idEstoque)}>Deletar</button>
+                      <button
+                        className="btn btn-sm btn-error"
+                        onClick={() => document.getElementById(`popupModalDeletar-${e.idEstoque}`).showModal()}
+                      >
+                        Deletar
+                      </button>
+
+                      <dialog id={`popupModalDeletar-${e.idEstoque}`} className="modal">
+                        <div className="modal-box">
+                          <h3 className="font-bold text-lg">Tem certeza?</h3>
+                          <p className="py-4">Esta ação não poderá ser desfeita.</p>
+                          <div className="modal-action">
+                            <form method="dialog">
+                              <button className="btn">Cancelar</button>
+                            </form>
+                            <button
+                              className="btn btn-error"
+                              onClick={async () => {
+                                await deletar(e.idEstoque);
+                                document.getElementById(`popupModalDeletar-${e.idEstoque}`).close();
+                              }}
+                            >
+                              Confirmar
+                            </button>
+                          </div>
+                        </div>
+                      </dialog>
                     </td>
                   </tr>
                 ))

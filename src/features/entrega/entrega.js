@@ -89,8 +89,11 @@ export default function EntregaLista() {
                   <option key={e.idExpedicao} value={e.idExpedicao}>{e.idExpedicao}</option>
                 ))}
               </select>
+              <label className="label text-sm">Data Prevista</label>
               <input type="date" id="dataPrevista" className="input input-bordered w-full" placeholder="Data Prevista" />
+              <label className="label text-sm">Data Saída</label>
               <input type="date" id="dataSaida" className="input input-bordered w-full" placeholder="Data Saída" />
+              <label className="label text-sm">Data Entrega</label>
               <input type="date" id="dataEntrega" className="input input-bordered w-full" placeholder="Data Entrega" />
               <div className="modal-action">
                 <button className="btn">Cancelar</button>

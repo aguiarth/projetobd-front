@@ -168,7 +168,34 @@ export default function ProdutoAcabadoLista() {
                           </form>
                         </div>
                       </dialog>
-                      <button className="btn btn-sm btn-error" onClick={() => deletar(p.idProduto)}>Deletar</button>
+
+                      <button
+                        className="btn btn-sm btn-error"
+                        onClick={() => document.getElementById(`popupModalDeletar-${p.idProduto}`).showModal()}
+                      >
+                        Deletar
+                      </button>
+
+                      <dialog id={`popupModalDeletar-${p.idProduto}`} className="modal">
+                        <div className="modal-box">
+                          <h3 className="font-bold text-lg">Tem certeza?</h3>
+                          <p className="py-4">Esta ação não poderá ser desfeita.</p>
+                          <div className="modal-action">
+                            <form method="dialog">
+                              <button className="btn">Cancelar</button>
+                            </form>
+                            <button
+                              className="btn btn-error"
+                              onClick={async () => {
+                                await deletar(p.idProduto);
+                                document.getElementById(`popupModalDeletar-${p.idProduto}`).close();
+                              }}
+                            >
+                              Confirmar
+                            </button>
+                          </div>
+                        </div>
+                      </dialog>
                     </td>
                   </tr>
                 ))
