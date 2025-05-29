@@ -65,8 +65,8 @@ O projeto será desenvolvido e entregue em **dois módulos**, seguindo uma abord
 3. Instale as bibliotecas necessárias
 
 ```bash
-  npm install
-  npm install react-icons
+  rm -rf node_modules package-lock.json
+   npm install
 ```
 
 4. Rode com o comando
