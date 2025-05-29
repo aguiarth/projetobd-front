@@ -55,9 +55,22 @@ O projeto será desenvolvido e entregue em **dois módulos**, seguindo uma abord
 
 ## **Como Executar**  
 
-1. Configurar um banco de dados PostgreSQL/MySQL.  
-2. Criar o banco usando os scripts fornecidos.  
-3. Popular o banco com os dados iniciais.  
-4. Executar a aplicação Java e interagir com o sistema.  
+1. Rode o Backend
 
+2. Entre no diretório
+   
+```bash
+  cd projetobd-front
+```
+3. Instale as bibliotecas necessárias
+
+```bash
+  npm install
+  npm install react-icons
+```
+
+4. Rode com o comando
+```bash
+  npm run start
+```
 ---
