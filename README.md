@@ -1,95 +1,63 @@
+# **Sistema de Controle de Estoque, Vendas e Distribuição**  
 
-![Logo](https://ik.imagekit.io/vu5t8xb15vzcx/tr:h-100/android-chrome-512x512_EiumvYoXeA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669548997842)
+## **Descrição do Projeto**  
 
-# Daisy UI Admin Dashboard Template - DashWind 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+Este sistema tem como objetivo gerenciar o controle de estoque, vendas e distribuição de produtos, proporcionando uma interface interativa para acompanhamento de dados e execução de operações no banco de dados. A solução permite a inserção, alteração e remoção de registros, além de consultas para análise dos dados.  
 
-This is a free admin dashboard template that uses **Daisy UI** and React js. It has **fully customizable and themable CSS**  CSS and is powered by Tailwind CSS utility classes. Additionally, it comes with **redux toolkit** and other libraries already set up.
+O projeto é desenvolvido em **Java** e utiliza **SQL puro** para interação com o banco de dados, sem o uso de frameworks de mapeamento objeto-relacional (ORM).  
 
+## **Funcionalidades**  
 
-## Preview
+- **Gerenciamento de estoque:** controle de entrada, saída e reposição de produtos.  
+- **Gestão de vendas:** registro de pedidos, clientes e faturamento.  
+- **Distribuição:** rastreamento da entrega e logística dos pedidos.  
+- **Dashboard interativo:** visualização gráfica de métricas importantes, como volume de vendas, produtos mais vendidos e estoque disponível.  
+- **CRUD completo:** operações de inserção, atualização, deleção e visualização de dados diretamente pela interface.  
 
-🚀 [Live preview](https://tailwind-dashboard-template-dashwind.vercel.app/)
+## **Tecnologias Utilizadas**  
 
+- **Linguagem:** Java  
+- **Banco de Dados:** PostgreSQL ou MySQL  
+- **Frontend:** React (web) 
+- **SQL puro:** comandos diretos para inserção, atualização, deleção e seleção de dados  
 
-![App Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/tr:h-600/Screenshot_2023-05-09_at_12.57.37_PM_z94SiShUDS.png?updatedAt=1683617550144)
+## **Requisitos do Banco de Dados**  
 
+O banco de dados contará com **pelo menos 8 entidades** e aplicará diversos conceitos avançados, incluindo:  
 
+- **Atributos especiais:** composto e multivalorado  
+- **Relacionamentos:** cardinalidades variadas, atributos de relacionamento, autorrelacionamento  
+- **Estrutura avançada:** entidade fraca, herança  
+- **Regras adicionais:** constraints como `CHECK`, `DEFAULT`, `UNIQUE`  
 
-## Features
+## **Entrega e Desenvolvimento**  
 
-- **Light/dark** mode toggle
-- Token based user **authentication**
-- **Submenu support** in sidebar
-- Store management using **redux toolkit**
-- **Daisy UI** components and **Tailwind** support
-- **Right and left sidebar**, Universal loader, notifications
-- **Calendar**, global modal, **chart js 2**  and other components
+O projeto será desenvolvido e entregue em **dois módulos**, seguindo uma abordagem incremental.  
 
-## Typescript Nest Js Version
+### **Módulo 1**  
 
-[Link](https://github.com/robbins23/admin-dashboard-nextjs-typescript-daisyui)
+- Definição do mini-mundo  
+- Modelagem conceitual e lógica do banco de dados  
+- Criação do banco e inserção inicial de dados  
+- CRUD funcional em interface simples  
+- **Entrega:** Relatório versão 1.0 detalhando as etapas até o momento  
 
+### **Módulo 2**  
 
-## Installation
+- Evolução da interface com dashboard interativo  
+- Implementação de consultas SQL avançadas  
+- **Entrega:** Relatório final com documentação completa e apresentação  
 
-Go to project directory and run (make sure you have node installed first)
+## **Restrições**  
 
-```bash
-  npm install
-  npm start
-```
-    
-## Core Libraries Used
+- **Não utilizar frameworks ORM** como Django, SQLAlchemy, Hibernate ou similares.  
+- **Toda interação com o banco deve ser feita via SQL puro**, sem abstrações intermediárias.  
 
-- [React JS v18.2.0](https://reactjs.org/)
-- [React Router v6.4.3](https://reactrouter.com/en/main)
-- [Tailwind CSS v3.3.6](https://tailwindcss.com/)
-- [Daisy UI v4.4.19](https://daisyui.com/)
-- [HeroIcons](https://heroicons.com/)
-- [Redux toolkit v1.9](https://redux-toolkit.js.org/)
-- [React ChartJS 2 v5](https://react-chartjs-2.js.org/)
+## **Como Executar**  
 
-## Documentation
+1. Configurar um banco de dados PostgreSQL/MySQL.  
+2. Criar o banco usando os scripts fornecidos.  
+3. Popular o banco com os dados iniciais.  
+4. Executar a aplicação Java e interagir com o sistema.  
 
-[Documentation](https://tailwind-dashboard-template-dashwind.vercel.app/documentation)
-
-## Page Examples
-
-|                          |                               |
-:-------------------------:|:-------------------------:
-![Dark Mode](https://ik.imagekit.io/vu5t8xb15vzcx/tr:h-600/Screenshot_2023-05-09_at_12.57.37_PM_z94SiShUDS.png?updatedAt=1683617550144) | ![Transations Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-05-09_at_1.01.54_PM_YiG__JTFu.png?updatedAt=1683619541458) 
-![Leads Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-05-09_at_1.34.56_PM_cdSamaaCmA.png?updatedAt=1683619597855) | ![Setting Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-01-20_at_12.43.25_PM_xZBThuZdU.png?ik-sdk-version=javascript-1.4.3&updatedAt=1674198832089) 
-![Calendar Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-05-09_at_1.02.03_PM_pObZm43gl.png?updatedAt=1683617549958) | ![Register Screenshot](https://ik.imagekit.io/vu5t8xb15vzcx/Screenshot_2023-01-20_at_12.43.00_PM_1fkpMRG90.png?ik-sdk-version=javascript-1.4.3&updatedAt=1674198831908)
-
-
-
-
-
-## Preview
-
-🚀 [Live preview](https://tailwind-dashboard-template-dashwind.vercel.app/)
-
-
-## Roadmap
-
-- Addition of users, chat/ inbox page
-- Calendar improments
-- Seperate templates based on business functions like CRM, Sales, Project Management
-
-
-## Contributing
-
-Contributions are always welcome!
-
-## License
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
-
-## Feedback
-
-If you have any feedback, please reach out [here](https://forms.gle/8G7PsvQp8X1Swcf29)
-
-
-
+---
